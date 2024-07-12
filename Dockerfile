@@ -18,7 +18,7 @@ RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 RUN git init
 RUN git clone https://github.com/applefryduck/limap.git && \
     cd limap && \
-    git submodule update --init --recursive
+    git submodule update --recursive || echo "Some submodules failed to update, continuing..."
 
 # From here, final image
 FROM nvidia/cuda:11.5.2-devel-ubuntu20.04
